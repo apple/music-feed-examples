@@ -1,0 +1,6 @@
+click==8.1.7
+cryptography==42.0.7
+PyJWT==2.8.0
+requests==2.32.0
+urllib3==2.2.2
+pyspark==3.3.2

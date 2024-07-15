@@ -1,0 +1,9 @@
+# macOS specific files
+**/.DS_Store
+
+# Visual Studio Code
+.vscode/
+
+# IntelliJ IDEA
+.idea/
+**.iml
