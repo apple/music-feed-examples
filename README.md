@@ -6,7 +6,7 @@ A series of files showing how to use Apple Music Feed to access the latest feeds
 * Get the metadata for the Apache Parquet files.
 * Use the Apache Parquet files.
 
-These are presented as quick and easy files focused on the above, these may not be the most efficient methods for each but are suitable for basic instruction.
+These example files are written to be simple to understand and may not reflect possible code optimizations.
 
 
 ## Languages:
@@ -15,7 +15,6 @@ Currently, there are two examples:
 - Python3
 - Java 17
 
-They are in their respective subdirectories. Each example does the same set of tasks.
 
 ## Documentation:
 
