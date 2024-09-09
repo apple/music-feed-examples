@@ -45,11 +45,11 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = "com.apple.mediaFeed.example.App"
+    mainClass = "com.apple.musicFeed.example.App"
 }
 
 tasks.withType<Jar> {
     manifest {
-        attributes["Main-Class"] = "com.apple.mediaFeed.example.App"
+        attributes["Main-Class"] = "com.apple.musicFeed.example.App"
     }
 }
