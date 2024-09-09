@@ -70,7 +70,7 @@ public class App implements Callable<Integer> {
 
     @Option(names = {"--apple-music-feed-base-url"}, description = "url of Apple Music feed",
             defaultValue = "https://api.media.apple.com", required = true)
-    String appleMediaFeedBaseUrl;
+    String appleMusicFeedBaseUrl;
 
     @Option(names = {"--feed-name"}, description = "Feed name you wish to download", defaultValue = "artist",
             required = true)
@@ -89,7 +89,7 @@ public class App implements Callable<Integer> {
 
     @Override
     public Integer call() throws Exception {
-        System.out.println("Sending requests to " + appleMediaFeedBaseUrl);
+        System.out.println("Sending requests to " + appleMusicFeedBaseUrl);
         String jwt = generateJwt(secretKeyFilePath, teamId, keyId);
 
         System.out.println("Getting the latest export for feed " + feedName);
@@ -118,7 +118,7 @@ public class App implements Callable<Integer> {
     }
 
     private String getLatestExportId(String jwt) throws URISyntaxException, IOException, InterruptedException {
-        String latestUrl = appleMediaFeedBaseUrl + FEED_PREFIX + feedName + "/latest";
+        String latestUrl = appleMusicFeedBaseUrl + FEED_PREFIX + feedName + "/latest";
         HttpRequest request =
                 HttpRequest.newBuilder().GET()
                         .uri(new URI(latestUrl)).header("Authorization", "Bearer " + jwt)
@@ -142,7 +142,7 @@ public class App implements Callable<Integer> {
         int limit = 20;
 
         System.out.println("Getting the parquet file URLS from export " + latestExportId);
-        String partsUrl = appleMediaFeedBaseUrl + FEED_PREFIX + "exports/" + latestExportId + "/parts?limit=" + limit;
+        String partsUrl = appleMusicFeedBaseUrl + FEED_PREFIX + "exports/" + latestExportId + "/parts?limit=" + limit;
 
         PartResponse partResponse = (getParts(partsUrl, jwt));
         ArrayList<Part> parts = new ArrayList<>(partResponse.resources.parts.values());
@@ -150,7 +150,7 @@ public class App implements Callable<Integer> {
 
         System.out.println("Received " + parts.size() + " part urls at offset 0");
         while (!Strings.isNullOrEmpty(nextLink)) {
-            var nextUrl = appleMediaFeedBaseUrl + nextLink;
+            var nextUrl = appleMusicFeedBaseUrl + nextLink;
             var offset = getOffsetFromUrl(nextUrl)
                     .orElseThrow(() -> new PartsException("Illegally formatted nextUrl " + nextUrl));
             PartResponse nextPartResponse = getParts(nextUrl, jwt);

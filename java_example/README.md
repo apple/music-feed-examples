@@ -19,11 +19,11 @@ Run with
 
 For help, pass in the `-h` arg
 
-`./gradlew run args='-h'`
+`./gradlew run --args='-h'`
 for a description of the different arguments
 Pass in further arguments there:
 
-`.gradlew run args='--key-id=$KEY_ID --team-id=$TEAM_ID --secret-key-file-path=fake/file/path/private_key_secret.p8 --out-dir=/tmp/amf'`
+`./gradlew run --args='--key-id=$KEY_ID --team-id=$TEAM_ID --secret-key-file-path=fake/file/path/private_key_secret.p8 --out-dir=/tmp/amf'`
 
 ### Java Jar
 
